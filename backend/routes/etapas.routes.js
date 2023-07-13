@@ -1,8 +1,17 @@
-import Router from "express";
-import { obetnerEtapa } from "../controllers/etapas.controller.js";
+import express from "express";
 
-const routes = Router();
+const routes = express.Router();
 
-routes.get("/all", obetnerEtapa);
+import{obtenerCiclistas, agregarCiclista, borrarCiclista, actualizarCiclista, oneCiclista} from "../controllers/etapas.controller.js";
+
+routes.get("/all", obtenerCiclistas);
+
+routes.post("/add", agregarCiclista);
+
+routes.delete("/del/:id", borrarCiclista);
+
+routes.patch("/upd/:id", actualizarCiclista);
+
+routes.get("/one", oneCiclista);
 
 export default routes;

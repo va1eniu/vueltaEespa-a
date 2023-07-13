@@ -1,8 +1,17 @@
-import  express  from "express";
-import { obtenerEquipos } from "../controllers/equipos.controller.js";
+import express from "express";
 
-const router = express.Router();
+const routes = express.Router();
 
-router.get("/all", obtenerEquipos);
+import{obtenerCiclistas, agregarCiclista, borrarCiclista, actualizarCiclista, oneCiclista} from "../controllers/equipos.controller.js";
 
-export default router;
+routes.get("/all", obtenerCiclistas);
+
+routes.post("/add", agregarCiclista);
+
+routes.delete("/del/:id", borrarCiclista);
+
+routes.patch("/upd/:id", actualizarCiclista);
+
+routes.get("/one", oneCiclista);
+
+export default routes;
